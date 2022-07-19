@@ -7,15 +7,15 @@ from uuid import uuid4
 app = FastAPI()
 
 
-class Animals(BaseModel):
-    id = int
-    name = str
-    age = int
-    sex = str
-    color = str
+class Animal(BaseModel):
+    id: Optional[str]
+    name: str
+    age: int
+    sex: str
+    color: str
 
 
-db: list[Animals] = []
+db: List[Animal] = []
 
 
 @app.get("/animals")
@@ -23,8 +23,14 @@ def list_animals():
     return db
 
 
+@app.get("/animals/{animail_id:str}")
+def get_animal(animail_id):
+    for animal in db:
+        if animal[id] == animail_id:
+            return animail_id
+
 @app.post("/animals")
-def create_animal(animal: Animals):
-    #animal.id = uuid4()
+def create_animal(animal: Animal):
+    animal.id = uuid4()
     db.append(animal)
     return None
