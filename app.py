@@ -26,8 +26,8 @@ def list_animals():
 @app.get("/animals/{animail_id:str}")
 def get_animal(animail_id):
     for animal in db:
-        if animal[id] == animail_id:
-            return animail_id
+        if animail_id == animal.id:
+            return animal
 
 @app.post("/animals")
 def create_animal(animal: Animal):
