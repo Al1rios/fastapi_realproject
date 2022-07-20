@@ -3,6 +3,8 @@ from pydantic import BaseModel
 from typing import List, Optional
 from uuid import uuid4
 
+from requests import delete
+
 
 app = FastAPI()
 
@@ -23,14 +25,24 @@ def list_animals():
     return db
 
 
-@app.get("/animals/{animail_id:str}")
-def get_animal(animail_id):
+@app.get("/animals/{animail_id}")
+def get_animal(animail_id: str):
     for animal in db:
-        if animail_id == animal.id:
+        if animal.id == animail_id:
             return animal
+        return {"message":"animal not exist"}
+
+
+@app.delete("/animals/{animal_id}")
+def delete_animal(animal_id: str):
+    for index, animal in enumerate(db):
+        if animal.id == animal_id:
+            db.pop(index)
+            return {"message":"success"}
+    return {"message":"id not exist"}
 
 @app.post("/animals")
 def create_animal(animal: Animal):
-    animal.id = uuid4()
+    animal.id = str(uuid4())
     db.append(animal)
     return None
