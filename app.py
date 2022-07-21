@@ -8,9 +8,9 @@ from requests import delete
 
 
 app = FastAPI()
-url = 'https://al1rios-fastapi-realproject-7v7vr9w4fx94q-8000.githubpreview.dev/'
+
 origins = [
-    url,
+    "https://al1rios-fastapi-realproject-7v7vr9w4fx94q-8000.githubpreview.dev/animals",
     # "https://localhost.tiangolo.com",
     # "http://localhost",
     # "http://localhost:8080",
