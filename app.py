@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
@@ -10,10 +11,7 @@ from requests import delete
 app = FastAPI()
 
 origins = [
-    "https://al1rios-fastapi-realproject-7v7vr9w4fx94q-8000.githubpreview.dev/animals",
-    # "https://localhost.tiangolo.com",
-    # "http://localhost",
-    # "http://localhost:8080",
+    "http://127.0.0.1:5500"
 ]
 
 app.add_middleware(

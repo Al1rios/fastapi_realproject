@@ -1,6 +1,18 @@
+async function load_animals(){
+    const response = await axios.get('http://localhost:8000/animals')
+        
+    const animals = response.data
+        
+    const list_one = document.getElementById("list_animals")
 
-function load_animals(){
-    axios.get('https://al1rios-fastapi-realproject-7v7vr9w4fx94q-8000.githubpreview.dev/docs#/default/list_animals_animals_get').then(response == console.log(response.data))
+    animals.forEach(animal => {
+        const item = document.createElement('li')
+        item.innerText = animal.name
+
+        list_one.appendChild(item)
+    });
+
+    
 }
 
 
