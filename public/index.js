@@ -2,7 +2,7 @@ async function load_animals(){
     const response = await axios.get('http://localhost:8000/animals')
         
     const animals = response.data
-        
+         
     const list_one = document.getElementById("list_animals")
 
     animals.forEach(animal => {
