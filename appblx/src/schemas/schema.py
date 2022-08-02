@@ -6,9 +6,9 @@ class User(BaseModel):
     id: Optional[str] = None
     name: str
     phone: str
-    my_products: List[Product]
-    my_sales: List[PurchaseOrder]
-    my_purcharse_order: List[PurchaseOrder]
+    # my_products: List[Product]
+    # my_sales: List[PurchaseOrder]
+    # my_purcharse_order: List[PurchaseOrder]
 
 class Product(BaseModel):
     id: Optional[str] = None
@@ -17,10 +17,13 @@ class Product(BaseModel):
     price: float
     available: bool = False
 
+    class Config:
+        orm_mode = True
+
 class PurchaseOrder(BaseModel):
     id: Optional[str] = None
-    user: User
-    product: Product
+    # user: User
+    # product: Product
     amount: int
     delivery: bool = True
     address: str
